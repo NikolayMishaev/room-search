@@ -70,10 +70,10 @@
       <div class="filter">
         <form class="filter__form">
           <div class="filter__buttons">
-            <button class="filter__button">1к</button>
-            <button class="filter__button filter__button_active">2к</button>
-            <button class="filter__button">3к</button>
-            <button disabled class="filter__button">4к</button>
+            <button type="button" aria-label="1" class="filter__button">1к</button>
+            <button type="button" aria-label="2" class="filter__button filter__button_active">2к</button>
+            <button type="button" aria-label="3" class="filter__button">3к</button>
+            <button type="button" aria-label="4" disabled class="filter__button">4к</button>
           </div>
           <p class="filter__title">Стоимость квартиры, &#8381;</p>
           <div class="filter__inputs">
@@ -87,7 +87,7 @@
             <div class="filter__block"><span class="filter__text">до</span> <input id='square-to' class="filter__input" type="text"></div>
           </div>
           <div class="slider" id="slider-square"></div>
-          <button type="reset" class="filter__reset">Сбросить параметры <span class="filter__close">&#215;</span></button>
+          <button type="button" class="filter__reset">Сбросить параметры <span class="filter__close">&#215;</span></button>
         </form>
       </div>
     </aside>

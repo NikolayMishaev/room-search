@@ -1,10 +1,16 @@
 "use strict";
 
 const state = {
+  filterForm: document.querySelector(".filter__form"),
+  filterButtonsContainer: document.querySelector(".filter__buttons"),
+  fiterButtons: document.querySelectorAll(".filter__button"),
+  filterReset: document.querySelector(".filter__reset"),
   countFromSelect: 0,
   countToSelect: 0,
   countFrom: 0,
   countTo: 0,
+  squareFromSelect: 0,
+  squareToSelect: 0,
   squareFrom: 0,
   squareTo: 0,
   rooms: 2,
@@ -55,12 +61,10 @@ function showSliders() {
 
   inputNumber.addEventListener("change", function () {
     costSlider.noUiSlider.set([null, this.value]);
-    console.log("ok1");
   });
 
   inputNumber2.addEventListener("change", function () {
     costSlider.noUiSlider.set([this.value, null]);
-    console.log("ok2");
   });
 
   //==============================================================
@@ -91,24 +95,24 @@ function showSliders() {
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-      console.log("right");
+      state.squareToSelect = Number(value.split(".")[0]);
+      getCards();
     } else {
       inputNumber4.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-      console.log("left");
+      state.squareFromSelect = Number(value.split(".")[0]);
+      getCards();
     }
   });
 
   inputNumber3.addEventListener("change", function () {
     squareSlider.noUiSlider.set([null, this.value]);
-    console.log("ok1");
   });
 
   inputNumber4.addEventListener("change", function () {
     squareSlider.noUiSlider.set([this.value, null]);
-    console.log("ok2");
   });
 }
 
@@ -123,7 +127,6 @@ function getCards() {
       }
       deleteAllCards();
       const filteredCards = filterCards(data);
-      console.log(filteredCards);
       filteredCards.forEach((i) => {
         const { rooms, square, floor, count } = i;
         addCard(rooms, square, floor, count);
@@ -142,6 +145,8 @@ function filterCards(cards) {
     (i) =>
       Number(i.count) <= state.countToSelect &&
       Number(i.count) >= state.countFromSelect &&
+      Number(i.square) <= state.squareToSelect &&
+      Number(i.square) >= state.squareFromSelect &&
       Number(i.rooms) === state.rooms
   );
 }
@@ -211,3 +216,26 @@ function setSquareTo(i) {
 }
 
 getCards();
+
+state.filterForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+state.filterButtonsContainer.addEventListener("click", (e) => {
+  console.log(e.target);
+  if (
+    e.target.classList.contains("filter__button") &&
+    !e.target.classList.contains("filter__button_active")
+  ) {
+    deleteActiveClass(state.fiterButtons, "filter__button_active");
+    e.target.classList.add("filter__button_active");
+    state.rooms = Number(e.target.ariaLabel);
+    getCards();
+  }
+});
+
+function deleteActiveClass(array, activeClass) {
+  array.forEach((i) => i.classList.remove(activeClass));
+}
+
+state.filterReset.addEventListener("click", () => {});
