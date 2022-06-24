@@ -24,16 +24,16 @@
           </div>
           <p class="filter__title">Стоимость квартиры, &#8381;</p>
           <div class="filter__inputs">
-            <div class="filter__block"><span class="filter__text">от</span> <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');" class="filter__input" type="text"></div>
-            <div class="filter__block"><span class="filter__text">до</span> <input class="filter__input" type="number"></div>
+            <div class="filter__block"><span class="filter__text">от</span> <input id="cost-from" class="filter__input" type="text"></div>
+            <div class="filter__block"><span class="filter__text">до</span> <input id='cost-to' class="filter__input" type="text"></div>
           </div>
-          <div id="slider-one"></div>
+          <div class="slider" id="slider-cost"></div>
           <p class="filter__title">Площадь, м<span class="filter__index">2</span></p>
           <div class="filter__inputs">
-            <div class="filter__block"><span class="filter__text">от</span> <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');" class="filter__input" type="text"></div>
-            <div class="filter__block"><span class="filter__text">до</span> <input class="filter__input" type="number"></div>
+            <div class="filter__block"><span class="filter__text">от</span> <input id="square-from" class="filter__input" type="text"></div>
+            <div class="filter__block"><span class="filter__text">до</span> <input id='square-to' class="filter__input" type="text"></div>
           </div>
-          <div id="slider-second"></div>
+          <div class="slider" id="slider-square"></div>
           <button class="filter__reset">Сбросить параметры <span class="filter__close">&#215;</span></button>
         </form>
       </div>

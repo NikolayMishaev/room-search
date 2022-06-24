@@ -13,16 +13,24 @@
     padding: 0 8px;
     background-color: transparent;
     border: unset;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
     &:focus {
       outline: unset;
     }
   }
   &__block {
+    margin-top: 8px;
     display: flex;
   }
   &__index {
     vertical-align: super;
     font-size: 9px;
+  }
+  &__buttons {
+    display: flex;
   }
   &__button {
     background-color: white;
@@ -38,7 +46,7 @@
     transition: $transition;
     &:hover {
       cursor: pointer;
-      opacity: .5;
+      opacity: 0.5;
     }
     &:disabled:hover {
       cursor: auto;
@@ -76,7 +84,13 @@
     font-size: 13px;
     line-height: 18px;
     mix-blend-mode: normal;
-    margin-top: 24px;
+    margin-top: 34px;
+    margin-left: 9px;
+    transition: $transition;
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
   }
   &__close {
     margin-left: 8px;
