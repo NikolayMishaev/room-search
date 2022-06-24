@@ -4,8 +4,11 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "develop": "webpack --env.mode=development --progress --watch",
+    "build": "webpack --env.mode=production",
+    "serve": "browser-sync start --server --files 'dist/css/*.css, **/*.html'",
+    "start": "run-p serve develop"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NikolayMishaev/room-search.git"
@@ -15,8 +18,8 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "nouislider": "^15.6.0"
-},
-"devDependencies": {
+  },
+  "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/plugin-transform-classes": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
@@ -42,7 +45,7 @@
     "svgo-loader": "^2.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
-},
+  },
   "bugs": {
     "url": "https://github.com/NikolayMishaev/room-search/issues"
   },
