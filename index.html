@@ -8,7 +8,36 @@
   <link rel="stylesheet" href="dist/css/style.css" />
   <script defer src="dist/js/script.js"></script>
 </head>
-<body>
-  <h1 class="title">Квартиры</h1>
+<body class="body">
+  <main class="main">
+    <div class="main-block">
+      <h1 class="title">Квартиры</h1>
+    </div>
+    <aside class="aside">
+      <div class="filter">
+        <form class="filter__form">
+          <div class="filter__buttons">
+            <button class="filter__button">1к</button>
+            <button class="filter__button filter__button_active">2к</button>
+            <button class="filter__button">3к</button>
+            <button disabled class="filter__button">4к</button>
+          </div>
+          <p class="filter__title">Стоимость квартиры, &#8381;</p>
+          <div class="filter__inputs">
+            <div class="filter__block"><span class="filter__text">от</span> <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');" class="filter__input" type="text"></div>
+            <div class="filter__block"><span class="filter__text">до</span> <input class="filter__input" type="number"></div>
+          </div>
+          <div id="slider-one"></div>
+          <p class="filter__title">Площадь, м<span class="filter__index">2</span></p>
+          <div class="filter__inputs">
+            <div class="filter__block"><span class="filter__text">от</span> <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');" class="filter__input" type="text"></div>
+            <div class="filter__block"><span class="filter__text">до</span> <input class="filter__input" type="number"></div>
+          </div>
+          <div id="slider-second"></div>
+          <button class="filter__reset">Сбросить параметры <span class="filter__close">&#215;</span></button>
+        </form>
+      </div>
+    </aside>
+  </main>
 </body>
 </html>

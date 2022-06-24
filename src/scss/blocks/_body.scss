@@ -1,3 +1,5 @@
-body {
+.body {
   font-family: $font-family-custom, $font-family-default;
+  display: flex;
+  justify-content: center;
 }
