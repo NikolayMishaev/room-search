@@ -62,17 +62,7 @@
 
         </div>
         <ul class="rooms__cards">
-          <li class="card card_margin_bottom">
-            <div class="card__info">
-              <p class="card__title">3-комнатная №104</p>
-              <div class="card__description">
-                <p class="card__text card__text_type_square">63,1 м<span class="card__index">2</span></p>
-                <p class="card__text card__text_type_floor">1<span class="card__text_type_grey"> из 17 этаж</span></p>
-                <p class="card__text">6 630 500<span> &#8381;</span></p>
-              </div>
-            </div>
-            <div class="card__image"></div>
-          </li>
+
         </ul>
       </div>
     </div>
@@ -102,5 +92,18 @@
       </div>
     </aside>
   </main>
+  <template id="card-template">
+    <li class="card card_margin_bottom">
+      <div class="card__info">
+        <p class="card__title"><span class="card__room">1</span>-комнатная №104</p>
+        <div class="card__description">
+          <p class="card__text card__text_type_square"><span class="card__square">63,1</span> м<span class="card__index">2</span></p>
+          <p class="card__text card__text_type_floor"><span class="card__floor">1</span><span class="card__text_type_grey"> из 17 этаж</span></p>
+          <p class="card__text"><span class="card__count">6 630 500</span> &#8381;</p>
+        </div>
+      </div>
+      <div class="card__image"></div>
+    </li>
+  </template>
 </body>
 </html>

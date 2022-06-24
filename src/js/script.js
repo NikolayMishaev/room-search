@@ -1,93 +1,213 @@
+"use strict";
+
+const state = {
+  countFromSelect: 0,
+  countToSelect: 0,
+  countFrom: 0,
+  countTo: 0,
+  squareFrom: 0,
+  squareTo: 0,
+  rooms: 2,
+  defaultValues: false,
+};
+
+// логика работы ползунков в фильтре
 import noUiSlider from "nouislider";
 
-var costSlider = document.getElementById("slider-cost");
-const from = 1000000;
-const to = 2000000;
+function showSliders() {
+  var costSlider = document.getElementById("slider-cost");
 
-noUiSlider.create(costSlider, {
-  start: [(from + to) / 2 - 250000, (from + to) / 2 + 250000],
-  connect: true,
-  step: 15000,
-  range: {
-    min: from,
-    max: to,
-  },
-});
+  noUiSlider.create(costSlider, {
+    start: [
+      (state.countFrom + state.countTo) / 2 - 500000,
+      (state.countFrom + state.countTo) / 2 + 500000,
+    ],
+    connect: true,
+    step: 15000,
+    range: {
+      min: state.countFrom,
+      max: state.countTo,
+    },
+  });
 
-var inputNumber = document.getElementById("cost-to");
-var inputNumber2 = document.getElementById("cost-from");
+  var inputNumber = document.getElementById("cost-to");
+  var inputNumber2 = document.getElementById("cost-from");
 
-costSlider.noUiSlider.on("update", function (values, handle) {
-  var value = values[handle];
+  costSlider.noUiSlider.on("update", function (values, handle) {
+    var value = values[handle];
 
-  if (handle) {
-    inputNumber.value = value
-      .split(".")[0]
-      .replace(/[^0-9.]/g, "")
-      .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    console.log("right");
+    if (handle) {
+      inputNumber.value = value
+        .split(".")[0]
+        .replace(/[^0-9.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      state.countToSelect = Number(value.split(".")[0]);
+      getCards();
+    } else {
+      inputNumber2.value = value
+        .split(".")[0]
+        .replace(/[^0-9.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      state.countFromSelect = Number(value.split(".")[0]);
+      getCards();
+    }
+  });
+
+  inputNumber.addEventListener("change", function () {
+    costSlider.noUiSlider.set([null, this.value]);
+    console.log("ok1");
+  });
+
+  inputNumber2.addEventListener("change", function () {
+    costSlider.noUiSlider.set([this.value, null]);
+    console.log("ok2");
+  });
+
+  //==============================================================
+
+  var squareSlider = document.getElementById("slider-square");
+
+  noUiSlider.create(squareSlider, {
+    start: [
+      (state.squareFrom + state.squareTo) / 2 - 10,
+      (state.squareFrom + state.squareTo) / 2 + 10,
+    ],
+    connect: true,
+    step: 1,
+    range: {
+      min: state.squareFrom,
+      max: state.squareTo,
+    },
+  });
+
+  var inputNumber3 = document.getElementById("square-to");
+  var inputNumber4 = document.getElementById("square-from");
+
+  squareSlider.noUiSlider.on("update", function (values, handle) {
+    var value = values[handle];
+
+    if (handle) {
+      inputNumber3.value = value
+        .split(".")[0]
+        .replace(/[^0-9.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      console.log("right");
+    } else {
+      inputNumber4.value = value
+        .split(".")[0]
+        .replace(/[^0-9.]/g, "")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      console.log("left");
+    }
+  });
+
+  inputNumber3.addEventListener("change", function () {
+    squareSlider.noUiSlider.set([null, this.value]);
+    console.log("ok1");
+  });
+
+  inputNumber4.addEventListener("change", function () {
+    squareSlider.noUiSlider.set([this.value, null]);
+    console.log("ok2");
+  });
+}
+
+// получение данных из json-файла
+function getCards() {
+  fetch("./data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      if (!state.defaultValues) {
+        setDefaultValuesSliders(data);
+        showSliders();
+      }
+      deleteAllCards();
+      const filteredCards = filterCards(data);
+      console.log(filteredCards);
+      filteredCards.forEach((i) => {
+        const { rooms, square, floor, count } = i;
+        addCard(rooms, square, floor, count);
+      });
+    });
+}
+
+const cardsContainer = document.querySelector(".rooms__cards");
+
+function deleteAllCards() {
+  cardsContainer.innerHTML = "";
+}
+
+function filterCards(cards) {
+  return cards.filter(
+    (i) =>
+      Number(i.count) <= state.countToSelect &&
+      Number(i.count) >= state.countFromSelect &&
+      Number(i.rooms) === state.rooms
+  );
+}
+
+function addCard(rooms, square, floor, count) {
+  const cardTemplate = document.querySelector("#card-template").content;
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  cardElement.querySelector(".card__room").textContent = rooms;
+  cardElement.querySelector(".card__square").textContent = square.replace(
+    ".",
+    ","
+  );
+  cardElement.querySelector(".card__floor").textContent = floor;
+  cardElement.querySelector(".card__count").textContent = count;
+  cardsContainer.append(cardElement);
+}
+
+// устанавить значения при первом запуске в соответствии с полученными данными
+function setDefaultValuesSliders(cards) {
+  cards.forEach((i) => {
+    setCountFrom(i);
+    setCountTo(i);
+    setSquareFrom(i);
+    setSquareTo(i);
+  });
+  state.defaultValues = true;
+}
+
+function setCountFrom(i) {
+  if (!state.countFrom) {
+    state.countFrom = Number(i.count);
   } else {
-    inputNumber2.value = value
-      .split(".")[0]
-      .replace(/[^0-9.]/g, "")
-      .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    console.log("left");
+    if (Number(i.count) < state.countFrom) {
+      state.countFrom = Number(i.count);
+    }
   }
-});
+}
 
-inputNumber.addEventListener("change", function () {
-  costSlider.noUiSlider.set([null, this.value]);
-  console.log("ok1");
-});
-
-inputNumber2.addEventListener("change", function () {
-  costSlider.noUiSlider.set([this.value, null]);
-  console.log("ok2");
-});
-
-//==============================================================
-
-var squareSlider = document.getElementById("slider-square");
-const from1 = 20;
-const to1 = 150;
-
-noUiSlider.create(squareSlider, {
-  start: [(from1 + to1) / 2 - 10, (from1 + to1) / 2 + 10],
-  connect: true,
-  step: 1,
-  range: {
-    min: from1,
-    max: to1,
-  },
-});
-
-var inputNumber3 = document.getElementById("square-to");
-var inputNumber4 = document.getElementById("square-from");
-
-squareSlider.noUiSlider.on("update", function (values, handle) {
-  var value = values[handle];
-
-  if (handle) {
-    inputNumber3.value = value
-      .split(".")[0]
-      .replace(/[^0-9.]/g, "")
-      .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    console.log("right");
+function setCountTo(i) {
+  if (!state.countTo) {
+    state.countTo = Number(i.count);
   } else {
-    inputNumber4.value = value
-      .split(".")[0]
-      .replace(/[^0-9.]/g, "")
-      .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    console.log("left");
+    if (Number(i.count) > state.countTo) {
+      state.countTo = Number(i.count);
+    }
   }
-});
+}
 
-inputNumber3.addEventListener("change", function () {
-  squareSlider.noUiSlider.set([null, this.value]);
-  console.log("ok1");
-});
+function setSquareFrom(i) {
+  if (!state.squareFrom) {
+    state.squareFrom = Number(i.square);
+  } else {
+    if (Number(i.square) < state.squareFrom) {
+      state.squareFrom = Number(i.square);
+    }
+  }
+}
 
-inputNumber4.addEventListener("change", function () {
-  squareSlider.noUiSlider.set([this.value, null]);
-  console.log("ok2");
-});
+function setSquareTo(i) {
+  if (!state.squareTo) {
+    state.squareTo = Number(i.square);
+  } else {
+    if (Number(i.square) > state.squareTo) {
+      state.squareTo = Number(i.square);
+    }
+  }
+}
+
+getCards();

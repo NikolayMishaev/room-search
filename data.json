@@ -1,0 +1,11 @@
+[
+  { "rooms": "1", "square": "33.1", "floor": "1", "count": "3630500" },
+  { "rooms": "2", "square": "24.5", "floor": "14", "count": "6250000" },
+  { "rooms": "3", "square": "105.7", "floor": "7", "count": "7849120" },
+  { "rooms": "2", "square": "94.2", "floor": "8", "count": "8630700" },
+  { "rooms": "1", "square": "35.6", "floor": "2", "count": "9250006" },
+  { "rooms": "1", "square": "72.8", "floor": "12", "count": "13840522" },
+  { "rooms": "3", "square": "51.9", "floor": "1", "count": "11430500" },
+  { "rooms": "1", "square": "42.6", "floor": "9", "count": "2500000" },
+  { "rooms": "2", "square": "98.2", "floor": "15", "count": "8842140" }
+]
