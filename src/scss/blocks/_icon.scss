@@ -1,0 +1,15 @@
+.icon {
+  width: 20px;
+  height: 20px;
+  &_type_arrow {
+    width: 8px;
+    height: 4px;
+  }
+  &_type_arrow-down {
+    width: 8px;
+    height: 4px;
+    transform: rotate(180deg);
+    margin-top: 3px;
+    margin-left: 2px;
+  }
+}

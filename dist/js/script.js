@@ -101,10 +101,23 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPAC
 /*!****************************!*\
   !*** ./src/icons/icons.js ***!
   \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuL3NyYy9pY29ucy9pY29ucy5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/icons/icons.js\n");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _svg_arrow_up_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./svg/arrow-up.svg */ \"./src/icons/svg/arrow-up.svg\");\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaWNvbnMvaWNvbnMuanM/NTMzNiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtBQUFBIiwiZmlsZSI6Ii4vc3JjL2ljb25zL2ljb25zLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFwiLi9zdmcvYXJyb3ctdXAuc3ZnXCI7XHJcbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/icons/icons.js\n");
+
+/***/ }),
+
+/***/ "./src/icons/svg/arrow-up.svg":
+/*!************************************!*\
+  !*** ./src/icons/svg/arrow-up.svg ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n      id: \"icon-arrow-up-usage\",\n      viewBox: \"0 0 8 4\",\n      url: __webpack_require__.p + \"./images/icons/sprite.svg#icon-arrow-up\",\n      toString: function () {\n        return this.url;\n      }\n    });//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaWNvbnMvc3ZnL2Fycm93LXVwLnN2Zz8xOTdkIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQWU7QUFDZjtBQUNBO0FBQ0EsV0FBVyxxQkFBdUI7QUFDbEM7QUFDQTtBQUNBO0FBQ0EsSyIsImZpbGUiOiIuL3NyYy9pY29ucy9zdmcvYXJyb3ctdXAuc3ZnLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQge1xuICAgICAgaWQ6IFwiaWNvbi1hcnJvdy11cC11c2FnZVwiLFxuICAgICAgdmlld0JveDogXCIwIDAgOCA0XCIsXG4gICAgICB1cmw6IF9fd2VicGFja19wdWJsaWNfcGF0aF9fICsgXCIuL2ltYWdlcy9pY29ucy9zcHJpdGUuc3ZnI2ljb24tYXJyb3ctdXBcIixcbiAgICAgIHRvU3RyaW5nOiBmdW5jdGlvbiAoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLnVybDtcbiAgICAgIH1cbiAgICB9Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./src/icons/svg/arrow-up.svg\n");
 
 /***/ }),
 

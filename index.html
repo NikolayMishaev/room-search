@@ -12,6 +12,69 @@
   <main class="main">
     <div class="main-block">
       <h1 class="title">Квартиры</h1>
+      <div class="rooms">
+        <div class="rooms__heading">
+          <button class="rooms__button rooms__button_type_square">
+            <p class="rooms__text">S, м<span class="rooms__index">2</span></p>
+            <div class="rooms__icon">
+              <svg class="icon icon_type_arrow">
+                <use
+                  xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
+                ></use>
+              </svg>
+              <svg class="icon icon_type_arrow-down">
+                <use
+                  xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
+                ></use>
+              </svg>
+            </div>
+          </button>
+          <button class="rooms__button rooms__button_type_floor">
+            <p class="rooms__text">Этаж</p>
+            <div class="rooms__icon">
+              <svg class="icon icon_type_arrow">
+                <use
+                  xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
+                ></use>
+              </svg>
+              <svg class="icon icon_type_arrow-down">
+                <use
+                  xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
+                ></use>
+              </svg>
+            </div>
+          </button>
+          <button class="rooms__button">
+            <p class="rooms__text">Цена, &#8381;</p>
+            <div class="rooms__icon">
+              <svg class="icon icon_type_arrow">
+                <use
+                  xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
+                ></use>
+              </svg>
+              <svg class="icon icon_type_arrow-down">
+                <use
+                  xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
+                ></use>
+              </svg>
+            </div>
+          </button>
+
+        </div>
+        <ul class="rooms__cards">
+          <li class="card card_margin_bottom">
+            <div class="card__info">
+              <p class="card__title">3-комнатная №104</p>
+              <div class="card__description">
+                <p class="card__text card__text_type_square">63,1 м<span class="card__index">2</span></p>
+                <p class="card__text card__text_type_floor">1<span class="card__text_type_grey"> из 17 этаж</span></p>
+                <p class="card__text">6 630 500<span> &#8381;</span></p>
+              </div>
+            </div>
+            <div class="card__image"></div>
+          </li>
+        </ul>
+      </div>
     </div>
     <aside class="aside">
       <div class="filter">
@@ -34,7 +97,7 @@
             <div class="filter__block"><span class="filter__text">до</span> <input id='square-to' class="filter__input" type="text"></div>
           </div>
           <div class="slider" id="slider-square"></div>
-          <button class="filter__reset">Сбросить параметры <span class="filter__close">&#215;</span></button>
+          <button type="reset" class="filter__reset">Сбросить параметры <span class="filter__close">&#215;</span></button>
         </form>
       </div>
     </aside>

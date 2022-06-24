@@ -1,0 +1,44 @@
+.rooms {
+  &__text {
+    margin: 0 5px 0 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  &__heading {
+    display: flex;
+    margin: 0 0 16px 24px;
+  }
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__index {
+    vertical-align: super;
+    font-size: 10px;
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    background-color: unset;
+    border: none;
+    margin-right: 10px;
+    padding-left: 0;
+    &:hover {
+      cursor: pointer;
+    }
+    &_type_square {
+      min-width: 60px;
+    }
+    &_type_floor {
+      min-width: 80px;
+    }
+  }
+  &__cards {
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -2,4 +2,8 @@
   position: sticky;
   top: 48px;
   right: 0;
+  display: none;
+  @media #{$screen-tablet} {
+    display: block;
+  }
 }

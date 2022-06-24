@@ -1,0 +1,42 @@
+.card {
+  list-style-type: none;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px 24px;
+  &_margin_bottom {
+    margin-bottom: 4px;
+  }
+  &__image {
+    width: 80px;
+    height: 80px;
+    background: url(./../images/room.jpg);
+    margin-left: auto;
+  }
+  &__title {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  &__description {
+    display: flex;
+  }
+  &__text {
+    margin-right: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    &_type_grey {
+      opacity: 0.5;
+    }
+    &_type_square {
+      min-width: 60px;
+    }
+    &_type_floor {
+      min-width: 80px;
+    }
+  }
+}
