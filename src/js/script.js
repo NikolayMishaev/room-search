@@ -11,7 +11,7 @@ const state = {
   inputCostFrom: document.getElementById("cost-from"),
   inputCostTo: document.getElementById("cost-to"),
   filterButtonsContainer: document.querySelector(".filter__buttons"),
-  fiterButtons: document.querySelectorAll(".filter__button"),
+  filterButtons: document.querySelectorAll(".filter__button"),
   filterReset: document.querySelector(".filter__reset"),
   countFromSelect: 0,
   countToSelect: 0,
@@ -134,7 +134,7 @@ function getDefaultValueSquareTo() {
 // получение данных из json-файла
 function getCards() {
   state.loader.style.display = "block";
-  setTimeout(sendRequest, 2000);
+  setTimeout(sendRequest, Math.random() * 1000);
   function sendRequest() {
     fetch("./data.json")
       .then((res) =>
@@ -150,6 +150,12 @@ function getCards() {
         // state.numberCardsDisplayed = 5;
         deleteAllCards();
         state.filteredCards = filterCards(data);
+        state.filterButtons.forEach((i) => {
+          if (i.disabled) {
+            i.classList.remove("filter__button_active");
+            state.rooms[state.rooms.indexOf(Number(i.ariaLabel))] = 0;
+          }
+        });
         showCards();
         toggleVisibleButtonAddCards();
         state.loader.style.display = "none";
@@ -176,14 +182,18 @@ function deleteAllCards() {
 }
 
 function filterCards(cards) {
-  return cards.filter(
-    (i) =>
+  state.filterButtons.forEach((i) => (i.disabled = true));
+  return cards.filter((i) => {
+    const result =
       Number(i.count) <= state.countToSelect &&
       Number(i.count) >= state.countFromSelect &&
       Number(i.square) <= state.squareToSelect &&
-      Number(i.square) >= state.squareFromSelect &&
-      state.rooms.includes(Number(i.rooms))
-  );
+      Number(i.square) >= state.squareFromSelect;
+    if (result) {
+      state.filterButtons[Number(i.rooms) - 1].disabled = false;
+    }
+    return result && state.rooms.includes(Number(i.rooms));
+  });
 }
 
 function addCard(rooms, square, floor, count) {
@@ -199,7 +209,7 @@ function addCard(rooms, square, floor, count) {
   cardsContainer.append(cardElement);
 }
 
-// устанавить значения при первом запуске в соответствии с полученными данными
+// устанавить значения при первом запуске в соответствии с полученными данными из data.json
 function setDefaultValuesSliders(cards) {
   cards.forEach((i) => {
     setCountFrom(i);
@@ -252,11 +262,6 @@ function setSquareTo(i) {
 
 getCards();
 
-// state.filterForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   console.log("here");
-// });
-
 state.filterButtonsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("filter__button")) {
     toogleActiveClass(e.target, "filter__button_active");
@@ -267,7 +272,7 @@ state.filterButtonsContainer.addEventListener("click", (e) => {
 function toogleActiveClass(button, activeClass) {
   if (button.classList.contains(activeClass)) {
     button.classList.remove(activeClass);
-    countActiveClass(state.fiterButtons, activeClass);
+    countActiveClass(state.filterButtons, activeClass);
   } else {
     button.classList.add(activeClass);
     state.rooms.push(Number(button.ariaLabel));
@@ -289,8 +294,8 @@ function deleteActiveClass(buttons, activeClass) {
 }
 
 state.filterReset.addEventListener("click", () => {
-  deleteActiveClass(state.fiterButtons, "filter__button_active");
-  toogleActiveClass(state.fiterButtons[1], "filter__button_active");
+  deleteActiveClass(state.filterButtons, "filter__button_active");
+  toogleActiveClass(state.filterButtons[1], "filter__button_active");
   state.inputCostFrom.value = getDefaultValueCountFrom();
   state.inputCostFrom.dispatchEvent(new Event("change"));
   state.inputCostTo.value = getDefaultValueCountTo();
