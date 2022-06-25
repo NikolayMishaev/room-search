@@ -26,6 +26,9 @@ const state = {
   defaultValues: false,
   numberCardsDisplayed: 5,
   filteredCards: [],
+  sortFloor: "asc",
+  sortPrice: "asc",
+  sortSquare: "asc",
 };
 
 const debounceGetCards = debounce(getCards, 300);
@@ -339,3 +342,45 @@ window.addEventListener("scroll", () => {
 });
 
 getCards();
+
+document
+  .querySelector(".rooms__button_type_floor")
+  .addEventListener("click", () => {
+    if (state.sortFloor === "asc") {
+      state.filteredCards.sort((a, b) => a.floor - b.floor);
+      state.sortFloor = "desc";
+    } else {
+      state.filteredCards.sort((a, b) => b.floor - a.floor);
+      state.sortFloor = "asc";
+    }
+    deleteAllCards();
+    showCards();
+  });
+
+document
+  .querySelector(".rooms__button_type_price")
+  .addEventListener("click", () => {
+    if (state.sortPrice === "asc") {
+      state.filteredCards.sort((a, b) => a.count - b.count);
+      state.sortPrice = "desc";
+    } else {
+      state.filteredCards.sort((a, b) => b.count - a.count);
+      state.sortPrice = "asc";
+    }
+    deleteAllCards();
+    showCards();
+  });
+
+document
+  .querySelector(".rooms__button_type_square")
+  .addEventListener("click", () => {
+    if (state.sortSquare === "asc") {
+      state.filteredCards.sort((a, b) => a.square - b.square);
+      state.sortSquare = "desc";
+    } else {
+      state.filteredCards.sort((a, b) => b.square - a.square);
+      state.sortSquare = "asc";
+    }
+    deleteAllCards();
+    showCards();
+  });
