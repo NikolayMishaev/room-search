@@ -13,7 +13,7 @@ const state = {
   squareToSelect: 0,
   squareFrom: 0,
   squareTo: 0,
-  rooms: 2,
+  rooms: [2],
   defaultValues: false,
 };
 
@@ -147,7 +147,7 @@ function filterCards(cards) {
       Number(i.count) >= state.countFromSelect &&
       Number(i.square) <= state.squareToSelect &&
       Number(i.square) >= state.squareFromSelect &&
-      Number(i.rooms) === state.rooms
+      state.rooms.includes(Number(i.rooms))
   );
 }
 
@@ -222,20 +222,29 @@ state.filterForm.addEventListener("submit", (e) => {
 });
 
 state.filterButtonsContainer.addEventListener("click", (e) => {
-  console.log(e.target);
-  if (
-    e.target.classList.contains("filter__button") &&
-    !e.target.classList.contains("filter__button_active")
-  ) {
-    deleteActiveClass(state.fiterButtons, "filter__button_active");
-    e.target.classList.add("filter__button_active");
-    state.rooms = Number(e.target.ariaLabel);
+  if (e.target.classList.contains("filter__button")) {
+    toogleActiveClass(e.target);
     getCards();
   }
 });
 
-function deleteActiveClass(array, activeClass) {
-  array.forEach((i) => i.classList.remove(activeClass));
+function toogleActiveClass(button) {
+  if (button.classList.contains("filter__button_active")) {
+    button.classList.remove("filter__button_active");
+    countActiveClass(state.fiterButtons, "filter__button_active");
+  } else {
+    button.classList.add("filter__button_active");
+    state.rooms.push(Number(button.ariaLabel));
+  }
+}
+
+function countActiveClass(buttons, activeClass) {
+  state.rooms = [];
+  buttons.forEach((i) => {
+    if (i.classList.contains(activeClass)) {
+      state.rooms.push(Number(i.ariaLabel));
+    }
+  });
 }
 
 state.filterReset.addEventListener("click", () => {});
