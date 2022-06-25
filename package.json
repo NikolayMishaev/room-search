@@ -8,7 +8,7 @@
     "build": "webpack --env.mode=production",
     "serve": "browser-sync start --server --files 'dist/css/*.css, **/*.html'",
     "start": "run-p serve develop"
-},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NikolayMishaev/room-search.git"
@@ -16,6 +16,7 @@
   "author": "Nikolay Mishaev",
   "license": "ISC",
   "dependencies": {
+    "debounce": "^1.2.1",
     "normalize.css": "^8.0.1",
     "nouislider": "^15.6.0"
   },

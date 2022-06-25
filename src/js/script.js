@@ -1,4 +1,6 @@
 "use strict";
+import noUiSlider from "nouislider";
+import { debounce } from "debounce";
 
 const state = {
   // filterForm: document.querySelector(".filter__form"),
@@ -25,8 +27,9 @@ const state = {
   filteredCards: [],
 };
 
+const debounceGetCards = debounce(getCards, 300);
+
 // логика работы ползунков в фильтре
-import noUiSlider from "nouislider";
 
 function showSliders() {
   var costSlider = document.getElementById("slider-cost");
@@ -50,14 +53,14 @@ function showSliders() {
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
       state.countToSelect = Number(value.split(".")[0]);
-      getCards();
+      debounceGetCards();
     } else {
       state.inputCostFrom.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
       state.countFromSelect = Number(value.split(".")[0]);
-      getCards();
+      debounceGetCards();
     }
   });
 
@@ -92,14 +95,14 @@ function showSliders() {
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
       state.squareToSelect = Number(value.split(".")[0]);
-      getCards();
+      debounceGetCards();
     } else {
       state.inputSquareFrom.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
       state.squareFromSelect = Number(value.split(".")[0]);
-      getCards();
+      debounceGetCards();
     }
   });
 
@@ -244,7 +247,7 @@ getCards();
 state.filterButtonsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("filter__button")) {
     toogleActiveClass(e.target, "filter__button_active");
-    getCards();
+    debounceGetCards();
   }
 });
 
