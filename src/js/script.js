@@ -1,7 +1,11 @@
 "use strict";
 
 const state = {
-  filterForm: document.querySelector(".filter__form"),
+  // filterForm: document.querySelector(".filter__form"),
+  inputSquareFrom: document.getElementById("square-from"),
+  inputSquareTo: document.getElementById("square-to"),
+  inputCostFrom: document.getElementById("cost-from"),
+  inputCostTo: document.getElementById("cost-to"),
   filterButtonsContainer: document.querySelector(".filter__buttons"),
   fiterButtons: document.querySelectorAll(".filter__button"),
   filterReset: document.querySelector(".filter__reset"),
@@ -24,33 +28,27 @@ function showSliders() {
   var costSlider = document.getElementById("slider-cost");
 
   noUiSlider.create(costSlider, {
-    start: [
-      (state.countFrom + state.countTo) / 2 - 500000,
-      (state.countFrom + state.countTo) / 2 + 500000,
-    ],
+    start: [getDefaultValueCountFrom(), getDefaultValueCountTo()],
     connect: true,
-    step: 15000,
+    step: 1,
     range: {
       min: state.countFrom,
       max: state.countTo,
     },
   });
 
-  var inputNumber = document.getElementById("cost-to");
-  var inputNumber2 = document.getElementById("cost-from");
-
   costSlider.noUiSlider.on("update", function (values, handle) {
     var value = values[handle];
 
     if (handle) {
-      inputNumber.value = value
+      state.inputCostTo.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
       state.countToSelect = Number(value.split(".")[0]);
       getCards();
     } else {
-      inputNumber2.value = value
+      state.inputCostFrom.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -59,11 +57,11 @@ function showSliders() {
     }
   });
 
-  inputNumber.addEventListener("change", function () {
+  state.inputCostTo.addEventListener("change", function () {
     costSlider.noUiSlider.set([null, this.value]);
   });
 
-  inputNumber2.addEventListener("change", function () {
+  state.inputCostFrom.addEventListener("change", function () {
     costSlider.noUiSlider.set([this.value, null]);
   });
 
@@ -72,10 +70,7 @@ function showSliders() {
   var squareSlider = document.getElementById("slider-square");
 
   noUiSlider.create(squareSlider, {
-    start: [
-      (state.squareFrom + state.squareTo) / 2 - 10,
-      (state.squareFrom + state.squareTo) / 2 + 10,
-    ],
+    start: [getDefaultValueSquareFrom(), getDefaultValueSquareTo()],
     connect: true,
     step: 1,
     range: {
@@ -84,21 +79,18 @@ function showSliders() {
     },
   });
 
-  var inputNumber3 = document.getElementById("square-to");
-  var inputNumber4 = document.getElementById("square-from");
-
   squareSlider.noUiSlider.on("update", function (values, handle) {
     var value = values[handle];
 
     if (handle) {
-      inputNumber3.value = value
+      state.inputSquareTo.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
       state.squareToSelect = Number(value.split(".")[0]);
       getCards();
     } else {
-      inputNumber4.value = value
+      state.inputSquareFrom.value = value
         .split(".")[0]
         .replace(/[^0-9.]/g, "")
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -107,13 +99,29 @@ function showSliders() {
     }
   });
 
-  inputNumber3.addEventListener("change", function () {
+  state.inputSquareTo.addEventListener("change", function () {
     squareSlider.noUiSlider.set([null, this.value]);
   });
 
-  inputNumber4.addEventListener("change", function () {
+  state.inputSquareFrom.addEventListener("change", function () {
     squareSlider.noUiSlider.set([this.value, null]);
   });
+}
+
+function getDefaultValueCountFrom() {
+  return (state.countFrom + state.countTo) / 2 - 1500000;
+}
+
+function getDefaultValueCountTo() {
+  return (state.countFrom + state.countTo) / 2 + 1500000;
+}
+
+function getDefaultValueSquareFrom() {
+  return (state.squareFrom + state.squareTo) / 2 - 10;
+}
+
+function getDefaultValueSquareTo() {
+  return (state.squareFrom + state.squareTo) / 2 + 10;
 }
 
 // получение данных из json-файла
@@ -217,23 +225,24 @@ function setSquareTo(i) {
 
 getCards();
 
-state.filterForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+// state.filterForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   console.log("here");
+// });
 
 state.filterButtonsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("filter__button")) {
-    toogleActiveClass(e.target);
+    toogleActiveClass(e.target, "filter__button_active");
     getCards();
   }
 });
 
-function toogleActiveClass(button) {
-  if (button.classList.contains("filter__button_active")) {
-    button.classList.remove("filter__button_active");
-    countActiveClass(state.fiterButtons, "filter__button_active");
+function toogleActiveClass(button, activeClass) {
+  if (button.classList.contains(activeClass)) {
+    button.classList.remove(activeClass);
+    countActiveClass(state.fiterButtons, activeClass);
   } else {
-    button.classList.add("filter__button_active");
+    button.classList.add(activeClass);
     state.rooms.push(Number(button.ariaLabel));
   }
 }
@@ -247,4 +256,21 @@ function countActiveClass(buttons, activeClass) {
   });
 }
 
-state.filterReset.addEventListener("click", () => {});
+function deleteActiveClass(buttons, activeClass) {
+  state.rooms = [];
+  buttons.forEach((i) => i.classList.remove(activeClass));
+}
+
+state.filterReset.addEventListener("click", () => {
+  deleteActiveClass(state.fiterButtons, "filter__button_active");
+  toogleActiveClass(state.fiterButtons[1], "filter__button_active");
+  state.inputCostFrom.value = getDefaultValueCountFrom();
+  state.inputCostFrom.dispatchEvent(new Event("change"));
+  state.inputCostTo.value = getDefaultValueCountTo();
+  state.inputCostTo.dispatchEvent(new Event("change"));
+  state.inputSquareFrom.value = getDefaultValueSquareFrom();
+  state.inputSquareFrom.dispatchEvent(new Event("change"));
+  state.inputSquareTo.value = getDefaultValueSquareTo();
+  state.inputSquareTo.dispatchEvent(new Event("change"));
+  getCards();
+});
