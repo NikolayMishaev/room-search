@@ -3,6 +3,7 @@ import noUiSlider from "nouislider";
 import { debounce } from "debounce";
 
 const state = {
+  cardsContainer: document.querySelector(".rooms__cards"),
   loader: document.querySelector(".loader"),
   buttonUp: document.querySelector(".button-up"),
   buttonAddCards: document.querySelector(".rooms__button-add-cards"),
@@ -32,7 +33,8 @@ const debounceGetCards = debounce(getCards, 300);
 // логика работы ползунков в фильтре
 
 function showSliders() {
-  var costSlider = document.getElementById("slider-cost");
+  // ползунок стоимости квартиры
+  const costSlider = document.getElementById("slider-cost");
 
   noUiSlider.create(costSlider, {
     start: [getDefaultValueCountFrom(), getDefaultValueCountTo()],
@@ -45,7 +47,7 @@ function showSliders() {
   });
 
   costSlider.noUiSlider.on("update", function (values, handle) {
-    var value = values[handle];
+    const value = values[handle];
 
     if (handle) {
       state.inputCostTo.value = addSpaceToValue(value.split(".")[0]);
@@ -66,9 +68,8 @@ function showSliders() {
     costSlider.noUiSlider.set([deleteSpaceFromValue(this.value), null]);
   });
 
-  //==============================================================
-
-  var squareSlider = document.getElementById("slider-square");
+  // ползунок площади
+  const squareSlider = document.getElementById("slider-square");
 
   noUiSlider.create(squareSlider, {
     start: [getDefaultValueSquareFrom(), getDefaultValueSquareTo()],
@@ -81,7 +82,7 @@ function showSliders() {
   });
 
   squareSlider.noUiSlider.on("update", function (values, handle) {
-    var value = values[handle];
+    const value = values[handle];
 
     if (handle) {
       state.inputSquareTo.value = addSpaceToValue(value.split(".")[0]);
@@ -163,10 +164,8 @@ function toggleVisibleButtonAddCards() {
   }
 }
 
-const cardsContainer = document.querySelector(".rooms__cards");
-
 function deleteAllCards() {
-  cardsContainer.innerHTML = "";
+  state.cardsContainer.innerHTML = "";
 }
 
 function filterCards(cards) {
@@ -196,7 +195,7 @@ function addCard(rooms, square, floor, count, number) {
   cardElement.querySelector(".card__floor").textContent = floor;
   cardElement.querySelector(".card__count").textContent =
     addSpaceToValue(count);
-  cardsContainer.append(cardElement);
+  state.cardsContainer.append(cardElement);
 }
 
 // устанавить значения при первом запуске в соответствии с полученными данными из data.json
@@ -250,15 +249,6 @@ function setSquareTo(i) {
   }
 }
 
-getCards();
-
-state.filterButtonsContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("filter__button")) {
-    toogleActiveClass(e.target, "filter__button_active");
-    debounceGetCards();
-  }
-});
-
 function toogleActiveClass(button, activeClass) {
   if (button.classList.contains(activeClass)) {
     button.classList.remove(activeClass);
@@ -283,29 +273,6 @@ function deleteActiveClass(buttons, activeClass) {
   buttons.forEach((i) => i.classList.remove(activeClass));
 }
 
-state.filterReset.addEventListener("click", () => {
-  deleteActiveClass(state.filterButtons, "filter__button_active");
-  toogleActiveClass(state.filterButtons[1], "filter__button_active");
-  state.inputCostFrom.value = getDefaultValueCountFrom();
-  state.inputCostFrom.dispatchEvent(new Event("change"));
-  state.inputCostTo.value = getDefaultValueCountTo();
-  state.inputCostTo.dispatchEvent(new Event("change"));
-  state.inputSquareFrom.value = getDefaultValueSquareFrom();
-  state.inputSquareFrom.dispatchEvent(new Event("change"));
-  state.inputSquareTo.value = getDefaultValueSquareTo();
-  state.inputSquareTo.dispatchEvent(new Event("change"));
-  state.numberCardsDisplayed = 5;
-  toggleVisibleButtonAddCards();
-  getCards();
-});
-
-state.buttonAddCards.addEventListener("click", () => {
-  state.numberCardsDisplayed += 20;
-  deleteAllCards();
-  showCards();
-  toggleVisibleButtonAddCards();
-});
-
 function showCards() {
   state.filteredCards.slice(0, state.numberCardsDisplayed).forEach((i) => {
     const { rooms, square, floor, count, number } = i;
@@ -320,6 +287,40 @@ function addSpaceToValue(value) {
 function deleteSpaceFromValue(value) {
   return Number(String(value).replace(/\s/g, ""));
 }
+
+function imitationEvent(element, event) {
+  element.dispatchEvent(new Event(event));
+}
+
+state.filterButtonsContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("filter__button")) {
+    toogleActiveClass(e.target, "filter__button_active");
+    debounceGetCards();
+  }
+});
+
+state.filterReset.addEventListener("click", () => {
+  deleteActiveClass(state.filterButtons, "filter__button_active");
+  toogleActiveClass(state.filterButtons[1], "filter__button_active");
+  state.inputCostFrom.value = getDefaultValueCountFrom();
+  imitationEvent(state.inputCostFrom, "change");
+  state.inputCostTo.value = getDefaultValueCountTo();
+  imitationEvent(state.inputCostTo, "change");
+  state.inputSquareFrom.value = getDefaultValueSquareFrom();
+  imitationEvent(state.inputSquareFrom, "change");
+  state.inputSquareTo.value = getDefaultValueSquareTo();
+  imitationEvent(state.inputSquareTo, "change");
+  state.numberCardsDisplayed = 5;
+  toggleVisibleButtonAddCards();
+  getCards();
+});
+
+state.buttonAddCards.addEventListener("click", () => {
+  state.numberCardsDisplayed += 20;
+  deleteAllCards();
+  showCards();
+  toggleVisibleButtonAddCards();
+});
 
 state.buttonUp.addEventListener("click", () => {
   window.scrollTo({
@@ -336,3 +337,5 @@ window.addEventListener("scroll", () => {
     state.buttonUp.style.display = "none";
   }
 });
+
+getCards();
