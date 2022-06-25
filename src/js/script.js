@@ -3,7 +3,7 @@ import noUiSlider from "nouislider";
 import { debounce } from "debounce";
 
 const state = {
-  // filterForm: document.querySelector(".filter__form"),
+  loader: document.querySelector(".loader"),
   buttonUp: document.querySelector(".button-up"),
   buttonAddCards: document.querySelector(".rooms__button-add-cards"),
   inputSquareFrom: document.getElementById("square-from"),
@@ -133,19 +133,32 @@ function getDefaultValueSquareTo() {
 
 // получение данных из json-файла
 function getCards() {
-  fetch("./data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      if (!state.defaultValues) {
-        setDefaultValuesSliders(data);
-        showSliders();
-      }
-      // state.numberCardsDisplayed = 5;
-      deleteAllCards();
-      state.filteredCards = filterCards(data);
-      showCards();
-      toggleVisibleButtonAddCards();
-    });
+  state.loader.style.display = "block";
+  setTimeout(sendRequest, 2000);
+  function sendRequest() {
+    fetch("./data.json")
+      .then((res) =>
+        res.ok
+          ? res.json()
+          : Promise.reject(`Ошибка: ${res.status} ${res.statusText}`)
+      )
+      .then((data) => {
+        if (!state.defaultValues) {
+          setDefaultValuesSliders(data);
+          showSliders();
+        }
+        // state.numberCardsDisplayed = 5;
+        deleteAllCards();
+        state.filteredCards = filterCards(data);
+        showCards();
+        toggleVisibleButtonAddCards();
+        state.loader.style.display = "none";
+      })
+      .catch((err) => {
+        console.log(err);
+        state.loader.style.display = "none";
+      });
+  }
 }
 
 function toggleVisibleButtonAddCards() {
