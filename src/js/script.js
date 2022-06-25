@@ -196,10 +196,11 @@ function filterCards(cards) {
   });
 }
 
-function addCard(rooms, square, floor, count) {
+function addCard(rooms, square, floor, count, number) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   cardElement.querySelector(".card__room").textContent = rooms;
+  cardElement.querySelector(".card__number").textContent = number;
   cardElement.querySelector(".card__square").textContent = square.replace(
     ".",
     ","
@@ -311,14 +312,15 @@ state.filterReset.addEventListener("click", () => {
 
 state.buttonAddCards.addEventListener("click", () => {
   state.numberCardsDisplayed += 20;
+  deleteAllCards();
   showCards();
   toggleVisibleButtonAddCards();
 });
 
 function showCards() {
   state.filteredCards.slice(0, state.numberCardsDisplayed).forEach((i) => {
-    const { rooms, square, floor, count } = i;
-    addCard(rooms, square, floor, count);
+    const { rooms, square, floor, count, number } = i;
+    addCard(rooms, square, floor, count, number);
   });
 }
 

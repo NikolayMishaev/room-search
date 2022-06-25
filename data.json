@@ -1,102 +1,702 @@
 [
-  { "rooms": "1", "square": "33.1", "floor": "1", "count": "3630500" },
-  { "rooms": "2", "square": "24.5", "floor": "14", "count": "4250000" },
-  { "rooms": "3", "square": "105.7", "floor": "7", "count": "7849120" },
-  { "rooms": "2", "square": "74.2", "floor": "8", "count": "6830700" },
-  { "rooms": "1", "square": "55.6", "floor": "2", "count": "9250006" },
-  { "rooms": "1", "square": "92.8", "floor": "12", "count": "13840522" },
-  { "rooms": "3", "square": "101.9", "floor": "1", "count": "11430500" },
-  { "rooms": "1", "square": "82.6", "floor": "9", "count": "2604700" },
-  { "rooms": "3", "square": "98.2", "floor": "15", "count": "12842140" },
-  { "rooms": "3", "square": "81.4", "floor": "8", "count": "3630500" },
-  { "rooms": "1", "square": "45.2", "floor": "7", "count": "8250000" },
-  { "rooms": "3", "square": "51.2", "floor": "11", "count": "10849120" },
-  { "rooms": "2", "square": "26.8", "floor": "16", "count": "4630700" },
-  { "rooms": "1", "square": "25.4", "floor": "2", "count": "7250006" },
-  { "rooms": "2", "square": "77.1", "floor": "3", "count": "10845522" },
-  { "rooms": "3", "square": "51.4", "floor": "14", "count": "9430500" },
-  { "rooms": "2", "square": "41.5", "floor": "2", "count": "5300400" },
-  { "rooms": "2", "square": "97.4", "floor": "9", "count": "8442140" },
-  { "rooms": "1", "square": "51.4", "floor": "1", "count": "7308620" },
-  { "rooms": "3", "square": "77.9", "floor": "13", "count": "8645124" },
-  { "rooms": "1", "square": "33.1", "floor": "1", "count": "3630500" },
-  { "rooms": "2", "square": "24.5", "floor": "14", "count": "4250000" },
-  { "rooms": "3", "square": "105.7", "floor": "7", "count": "7849120" },
-  { "rooms": "2", "square": "74.2", "floor": "8", "count": "6830700" },
-  { "rooms": "1", "square": "55.6", "floor": "2", "count": "9250006" },
-  { "rooms": "1", "square": "92.8", "floor": "12", "count": "13840522" },
-  { "rooms": "3", "square": "101.9", "floor": "1", "count": "11430500" },
-  { "rooms": "1", "square": "82.6", "floor": "9", "count": "2604700" },
-  { "rooms": "3", "square": "98.2", "floor": "15", "count": "12842140" },
-  { "rooms": "3", "square": "81.4", "floor": "8", "count": "3630500" },
-  { "rooms": "1", "square": "45.2", "floor": "7", "count": "8250000" },
-  { "rooms": "3", "square": "51.2", "floor": "11", "count": "10849120" },
-  { "rooms": "2", "square": "26.8", "floor": "16", "count": "4630700" },
-  { "rooms": "1", "square": "25.4", "floor": "2", "count": "7250006" },
-  { "rooms": "2", "square": "77.1", "floor": "3", "count": "10845522" },
-  { "rooms": "3", "square": "51.4", "floor": "14", "count": "9430500" },
-  { "rooms": "2", "square": "41.5", "floor": "2", "count": "5300400" },
-  { "rooms": "2", "square": "97.4", "floor": "9", "count": "8442140" },
-  { "rooms": "1", "square": "51.4", "floor": "1", "count": "7308620" },
-  { "rooms": "3", "square": "77.9", "floor": "13", "count": "8645124" },
-  { "rooms": "1", "square": "33.1", "floor": "1", "count": "3630500" },
-  { "rooms": "2", "square": "24.5", "floor": "14", "count": "4250000" },
-  { "rooms": "3", "square": "105.7", "floor": "7", "count": "7849120" },
-  { "rooms": "2", "square": "74.2", "floor": "8", "count": "6830700" },
-  { "rooms": "1", "square": "55.6", "floor": "2", "count": "9250006" },
-  { "rooms": "1", "square": "92.8", "floor": "12", "count": "13840522" },
-  { "rooms": "3", "square": "101.9", "floor": "1", "count": "11430500" },
-  { "rooms": "1", "square": "82.6", "floor": "9", "count": "2604700" },
-  { "rooms": "3", "square": "98.2", "floor": "15", "count": "12842140" },
-  { "rooms": "3", "square": "81.4", "floor": "8", "count": "3630500" },
-  { "rooms": "1", "square": "45.2", "floor": "7", "count": "8250000" },
-  { "rooms": "3", "square": "51.2", "floor": "11", "count": "10849120" },
-  { "rooms": "2", "square": "26.8", "floor": "16", "count": "4630700" },
-  { "rooms": "1", "square": "25.4", "floor": "2", "count": "7250006" },
-  { "rooms": "2", "square": "77.1", "floor": "3", "count": "10845522" },
-  { "rooms": "3", "square": "51.4", "floor": "14", "count": "9430500" },
-  { "rooms": "2", "square": "41.5", "floor": "2", "count": "5300400" },
-  { "rooms": "2", "square": "97.4", "floor": "9", "count": "8442140" },
-  { "rooms": "1", "square": "51.4", "floor": "1", "count": "7308620" },
-  { "rooms": "3", "square": "77.9", "floor": "13", "count": "8645124" },
-  { "rooms": "1", "square": "33.1", "floor": "1", "count": "3630500" },
-  { "rooms": "2", "square": "24.5", "floor": "14", "count": "4250000" },
-  { "rooms": "3", "square": "105.7", "floor": "7", "count": "7849120" },
-  { "rooms": "2", "square": "74.2", "floor": "8", "count": "6830700" },
-  { "rooms": "1", "square": "55.6", "floor": "2", "count": "9250006" },
-  { "rooms": "1", "square": "92.8", "floor": "12", "count": "13840522" },
-  { "rooms": "3", "square": "101.9", "floor": "1", "count": "11430500" },
-  { "rooms": "1", "square": "82.6", "floor": "9", "count": "2604700" },
-  { "rooms": "3", "square": "98.2", "floor": "15", "count": "12842140" },
-  { "rooms": "3", "square": "81.4", "floor": "8", "count": "3630500" },
-  { "rooms": "1", "square": "45.2", "floor": "7", "count": "8250000" },
-  { "rooms": "3", "square": "51.2", "floor": "11", "count": "10849120" },
-  { "rooms": "2", "square": "26.8", "floor": "16", "count": "4630700" },
-  { "rooms": "1", "square": "25.4", "floor": "2", "count": "7250006" },
-  { "rooms": "2", "square": "77.1", "floor": "3", "count": "10845522" },
-  { "rooms": "3", "square": "51.4", "floor": "14", "count": "9430500" },
-  { "rooms": "2", "square": "41.5", "floor": "2", "count": "5300400" },
-  { "rooms": "2", "square": "97.4", "floor": "9", "count": "8442140" },
-  { "rooms": "1", "square": "51.4", "floor": "1", "count": "7308620" },
-  { "rooms": "3", "square": "77.9", "floor": "13", "count": "8645124" },
-  { "rooms": "1", "square": "33.1", "floor": "1", "count": "3630500" },
-  { "rooms": "2", "square": "24.5", "floor": "14", "count": "4250000" },
-  { "rooms": "3", "square": "105.7", "floor": "7", "count": "7849120" },
-  { "rooms": "2", "square": "74.2", "floor": "8", "count": "6830700" },
-  { "rooms": "1", "square": "55.6", "floor": "2", "count": "9250006" },
-  { "rooms": "1", "square": "92.8", "floor": "12", "count": "13840522" },
-  { "rooms": "4", "square": "101.9", "floor": "1", "count": "11430500" },
-  { "rooms": "1", "square": "82.6", "floor": "9", "count": "2604700" },
-  { "rooms": "3", "square": "98.2", "floor": "15", "count": "12842140" },
-  { "rooms": "3", "square": "81.4", "floor": "8", "count": "3630500" },
-  { "rooms": "1", "square": "45.2", "floor": "7", "count": "8250000" },
-  { "rooms": "3", "square": "51.2", "floor": "11", "count": "10849120" },
-  { "rooms": "2", "square": "26.8", "floor": "16", "count": "4630700" },
-  { "rooms": "1", "square": "25.4", "floor": "2", "count": "7250006" },
-  { "rooms": "2", "square": "77.1", "floor": "3", "count": "10845522" },
-  { "rooms": "3", "square": "51.4", "floor": "14", "count": "9430500" },
-  { "rooms": "2", "square": "41.5", "floor": "2", "count": "5300400" },
-  { "rooms": "2", "square": "97.4", "floor": "9", "count": "8442140" },
-  { "rooms": "1", "square": "51.4", "floor": "1", "count": "7308620" },
-  { "rooms": "3", "square": "77.9", "floor": "13", "count": "8645124" }
+  {
+    "rooms": "1",
+    "square": "33.1",
+    "floor": "1",
+    "count": "3630500",
+    "number": "152"
+  },
+  {
+    "rooms": "2",
+    "square": "24.5",
+    "floor": "14",
+    "count": "4250000",
+    "number": "151"
+  },
+  {
+    "rooms": "3",
+    "square": "105.7",
+    "floor": "7",
+    "count": "7849120",
+    "number": "150"
+  },
+  {
+    "rooms": "2",
+    "square": "74.2",
+    "floor": "8",
+    "count": "6830700",
+    "number": "142"
+  },
+  {
+    "rooms": "1",
+    "square": "55.6",
+    "floor": "2",
+    "count": "9250006",
+    "number": "140"
+  },
+  {
+    "rooms": "1",
+    "square": "92.8",
+    "floor": "12",
+    "count": "13840522",
+    "number": "139"
+  },
+  {
+    "rooms": "3",
+    "square": "104.3",
+    "floor": "10",
+    "count": "14561440",
+    "number": "138"
+  },
+  {
+    "rooms": "1",
+    "square": "82.6",
+    "floor": "9",
+    "count": "2604700",
+    "number": "135"
+  },
+  {
+    "rooms": "3",
+    "square": "98.6",
+    "floor": "11",
+    "count": "13042560",
+    "number": "132"
+  },
+  {
+    "rooms": "3",
+    "square": "81.4",
+    "floor": "8",
+    "count": "6630500",
+    "number": "130"
+  },
+  {
+    "rooms": "1",
+    "square": "45.2",
+    "floor": "7",
+    "count": "8250000",
+    "number": "129"
+  },
+  {
+    "rooms": "3",
+    "square": "51.2",
+    "floor": "11",
+    "count": "10849120",
+    "number": "127"
+  },
+  {
+    "rooms": "2",
+    "square": "26.8",
+    "floor": "16",
+    "count": "4630700",
+    "number": "125"
+  },
+  {
+    "rooms": "1",
+    "square": "25.4",
+    "floor": "2",
+    "count": "7250006",
+    "number": "122"
+  },
+  {
+    "rooms": "4",
+    "square": "77.1",
+    "floor": "3",
+    "count": "10845522",
+    "number": "119"
+  },
+  {
+    "rooms": "3",
+    "square": "51.4",
+    "floor": "14",
+    "count": "9430500",
+    "number": "118"
+  },
+  {
+    "rooms": "2",
+    "square": "41.5",
+    "floor": "2",
+    "count": "5300400",
+    "number": "116"
+  },
+  {
+    "rooms": "2",
+    "square": "97.4",
+    "floor": "9",
+    "count": "8442140",
+    "number": "105"
+  },
+  {
+    "rooms": "1",
+    "square": "51.4",
+    "floor": "1",
+    "count": "7308620",
+    "number": "102"
+  },
+  {
+    "rooms": "3",
+    "square": "77.9",
+    "floor": "13",
+    "count": "8645124",
+    "number": "101"
+  },
+  {
+    "rooms": "4",
+    "square": "32.3",
+    "floor": "1",
+    "count": "7200450",
+    "number": "100"
+  },
+  {
+    "rooms": "2",
+    "square": "26.4",
+    "floor": "12",
+    "count": "5154000",
+    "number": "99"
+  },
+  {
+    "rooms": "3",
+    "square": "104.2",
+    "floor": "6",
+    "count": "8762010",
+    "number": "97"
+  },
+  {
+    "rooms": "4",
+    "square": "76.5",
+    "floor": "9",
+    "count": "6942655",
+    "number": "95"
+  },
+  {
+    "rooms": "1",
+    "square": "45.3",
+    "floor": "5",
+    "count": "7550050",
+    "number": "94"
+  },
+  {
+    "rooms": "1",
+    "square": "90.7",
+    "floor": "9",
+    "count": "11840200",
+    "number": "93"
+  },
+  {
+    "rooms": "3",
+    "square": "101.9",
+    "floor": "1",
+    "count": "11430500",
+    "number": "92"
+  },
+  {
+    "rooms": "1",
+    "square": "81.2",
+    "floor": "8",
+    "count": "3634650",
+    "number": "91"
+  },
+  {
+    "rooms": "3",
+    "square": "89.4",
+    "floor": "14",
+    "count": "11852640",
+    "number": "90"
+  },
+  {
+    "rooms": "4",
+    "square": "81.4",
+    "floor": "8",
+    "count": "5820975",
+    "number": "89"
+  },
+  {
+    "rooms": "1",
+    "square": "43.5",
+    "floor": "9",
+    "count": "10230400",
+    "number": "88"
+  },
+  {
+    "rooms": "3",
+    "square": "50.5",
+    "floor": "12",
+    "count": "11949520",
+    "number": "87"
+  },
+  {
+    "rooms": "2",
+    "square": "24.3",
+    "floor": "15",
+    "count": "5637650",
+    "number": "86"
+  },
+  {
+    "rooms": "4",
+    "square": "22.1",
+    "floor": "3",
+    "count": "8205407",
+    "number": "85"
+  },
+  {
+    "rooms": "2",
+    "square": "79.2",
+    "floor": "4",
+    "count": "11654654",
+    "number": "84"
+  },
+  {
+    "rooms": "3",
+    "square": "50.2",
+    "floor": "12",
+    "count": "9654321",
+    "number": "83"
+  },
+  {
+    "rooms": "4",
+    "square": "47.3",
+    "floor": "8",
+    "count": "6015230",
+    "number": "82"
+  },
+  {
+    "rooms": "2",
+    "square": "90.8",
+    "floor": "16",
+    "count": "9600455",
+    "number": "81"
+  },
+  {
+    "rooms": "1",
+    "square": "49.1",
+    "floor": "11",
+    "count": "8654005",
+    "number": "80"
+  },
+  {
+    "rooms": "4",
+    "square": "80.2",
+    "floor": "1",
+    "count": "8540654",
+    "number": "79"
+  },
+  {
+    "rooms": "1",
+    "square": "35.6",
+    "floor": "1",
+    "count": "5230910",
+    "number": "78"
+  },
+  {
+    "rooms": "2",
+    "square": "31.7",
+    "floor": "14",
+    "count": "4766400",
+    "number": "77"
+  },
+  {
+    "rooms": "3",
+    "square": "104.3",
+    "floor": "15",
+    "count": "12840450",
+    "number": "76"
+  },
+  {
+    "rooms": "2",
+    "square": "68.1",
+    "floor": "8",
+    "count": "8026409",
+    "number": "75"
+  },
+  {
+    "rooms": "1",
+    "square": "35.2",
+    "floor": "9",
+    "count": "8235050",
+    "number": "74"
+  },
+  {
+    "rooms": "4",
+    "square": "88.4",
+    "floor": "16",
+    "count": "12844506",
+    "number": "73"
+  },
+  {
+    "rooms": "3",
+    "square": "100.1",
+    "floor": "2",
+    "count": "12842140",
+    "number": "72"
+  },
+  {
+    "rooms": "1",
+    "square": "83.2",
+    "floor": "10",
+    "count": "3605910",
+    "number": "71"
+  },
+  {
+    "rooms": "3",
+    "square": "95.8",
+    "floor": "2",
+    "count": "13450450",
+    "number": "70"
+  },
+  {
+    "rooms": "3",
+    "square": "81.4",
+    "floor": "8",
+    "count": "8432400",
+    "number": "69"
+  },
+  {
+    "rooms": "1",
+    "square": "47.3",
+    "floor": "9",
+    "count": "8350405",
+    "number": "68"
+  },
+  {
+    "rooms": "3",
+    "square": "55.6",
+    "floor": "10",
+    "count": "9859024",
+    "number": "67"
+  },
+  {
+    "rooms": "4",
+    "square": "22.3",
+    "floor": "14",
+    "count": "3930430",
+    "number": "66"
+  },
+  {
+    "rooms": "1",
+    "square": "29.2",
+    "floor": "6",
+    "count": "6540050",
+    "number": "65"
+  },
+  {
+    "rooms": "2",
+    "square": "75.3",
+    "floor": "8",
+    "count": "9015654",
+    "number": "64"
+  },
+  {
+    "rooms": "3",
+    "square": "58.2",
+    "floor": "11",
+    "count": "9654321",
+    "number": "63"
+  },
+  {
+    "rooms": "2",
+    "square": "39.1",
+    "floor": "1",
+    "count": "4802030",
+    "number": "62"
+  },
+  {
+    "rooms": "2",
+    "square": "95.2",
+    "floor": "10",
+    "count": "8654180",
+    "number": "61"
+  },
+  {
+    "rooms": "1",
+    "square": "53.6",
+    "floor": "2",
+    "count": "7550666",
+    "number": "60"
+  },
+  {
+    "rooms": "4",
+    "square": "75.2",
+    "floor": "12",
+    "count": "8660008",
+    "number": "59"
+  },
+  {
+    "rooms": "1",
+    "square": "37.4",
+    "floor": "1",
+    "count": "3070320",
+    "number": "58"
+  },
+  {
+    "rooms": "2",
+    "square": "26.1",
+    "floor": "14",
+    "count": "5100700",
+    "number": "57"
+  },
+  {
+    "rooms": "3",
+    "square": "96.2",
+    "floor": "2",
+    "count": "9445000",
+    "number": "56"
+  },
+  {
+    "rooms": "4",
+    "square": "69.4",
+    "floor": "6",
+    "count": "5942810",
+    "number": "55"
+  },
+  {
+    "rooms": "1",
+    "square": "48.2",
+    "floor": "7",
+    "count": "10506020",
+    "number": "54"
+  },
+  {
+    "rooms": "1",
+    "square": "97.5",
+    "floor": "6",
+    "count": "11840420",
+    "number": "53"
+  },
+  {
+    "rooms": "3",
+    "square": "98.2",
+    "floor": "3",
+    "count": "10638751",
+    "number": "52"
+  },
+  {
+    "rooms": "1",
+    "square": "80.7",
+    "floor": "3",
+    "count": "3454603",
+    "number": "51"
+  },
+  {
+    "rooms": "3",
+    "square": "96.6",
+    "floor": "14",
+    "count": "10945540",
+    "number": "50"
+  },
+  {
+    "rooms": "3",
+    "square": "81.4",
+    "floor": "8",
+    "count": "9638300",
+    "number": "49"
+  },
+  {
+    "rooms": "1",
+    "square": "40.4",
+    "floor": "9",
+    "count": "9240350",
+    "number": "48"
+  },
+  {
+    "rooms": "3",
+    "square": "54.6",
+    "floor": "16",
+    "count": "10056105",
+    "number": "47"
+  },
+  {
+    "rooms": "2",
+    "square": "24.2",
+    "floor": "9",
+    "count": "7634260",
+    "number": "46"
+  },
+  {
+    "rooms": "1",
+    "square": "22.9",
+    "floor": "7",
+    "count": "6465463",
+    "number": "45"
+  },
+  {
+    "rooms": "2",
+    "square": "70.2",
+    "floor": "9",
+    "count": "10006545",
+    "number": "44"
+  },
+  {
+    "rooms": "3",
+    "square": "58.5",
+    "floor": "9",
+    "count": "9500341",
+    "number": "43"
+  },
+  {
+    "rooms": "2",
+    "square": "40.2",
+    "floor": "7",
+    "count": "6090340",
+    "number": "42"
+  },
+  {
+    "rooms": "2",
+    "square": "90.2",
+    "floor": "16",
+    "count": "8650456",
+    "number": "41"
+  },
+  {
+    "rooms": "1",
+    "square": "52.6",
+    "floor": "8",
+    "count": "6990550",
+    "number": "40"
+  },
+  {
+    "rooms": "3",
+    "square": "75.1",
+    "floor": "12",
+    "count": "9500332",
+    "number": "39"
+  },
+  {
+    "rooms": "1",
+    "square": "39.8",
+    "floor": "1",
+    "count": "4650750",
+    "number": "38"
+  },
+  {
+    "rooms": "2",
+    "square": "23.1",
+    "floor": "14",
+    "count": "3042550",
+    "number": "37"
+  },
+  {
+    "rooms": "3",
+    "square": "98.9",
+    "floor": "11",
+    "count": "2560200",
+    "number": "36"
+  },
+  {
+    "rooms": "2",
+    "square": "62.8",
+    "floor": "11",
+    "count": "4830200",
+    "number": "35"
+  },
+  {
+    "rooms": "1",
+    "square": "41.9",
+    "floor": "4",
+    "count": "7850421",
+    "number": "34"
+  },
+  {
+    "rooms": "1",
+    "square": "87.5",
+    "floor": "17",
+    "count": "11445600",
+    "number": "33"
+  },
+  {
+    "rooms": "4",
+    "square": "105.4",
+    "floor": "13",
+    "count": "10546000",
+    "number": "32"
+  },
+  {
+    "rooms": "1",
+    "square": "81.4",
+    "floor": "8",
+    "count": "2764410",
+    "number": "31"
+  },
+  {
+    "rooms": "3",
+    "square": "94.3",
+    "floor": "5",
+    "count": "16845040",
+    "number": "30"
+  },
+  {
+    "rooms": "3",
+    "square": "81.4",
+    "floor": "8",
+    "count": "6434400",
+    "number": "29"
+  },
+  {
+    "rooms": "1",
+    "square": "42.7",
+    "floor": "1",
+    "count": "7950000",
+    "number": "28"
+  },
+  {
+    "rooms": "3",
+    "square": "56.1",
+    "floor": "8",
+    "count": "9700430",
+    "number": "27"
+  },
+  {
+    "rooms": "2",
+    "square": "28.1",
+    "floor": "14",
+    "count": "3930400",
+    "number": "26"
+  },
+  {
+    "rooms": "1",
+    "square": "28.7",
+    "floor": "3",
+    "count": "6504640",
+    "number": "25"
+  },
+  {
+    "rooms": "2",
+    "square": "76.9",
+    "floor": "13",
+    "count": "9546540",
+    "number": "24"
+  },
+  {
+    "rooms": "3",
+    "square": "54.6",
+    "floor": "16",
+    "count": "8654400",
+    "number": "23"
+  },
+  {
+    "rooms": "2",
+    "square": "39.4",
+    "floor": "3",
+    "count": "6701570",
+    "number": "22"
+  },
+  {
+    "rooms": "2",
+    "square": "98.1",
+    "floor": "14",
+    "count": "8350505",
+    "number": "21"
+  },
+  {
+    "rooms": "1",
+    "square": "56.2",
+    "floor": "4",
+    "count": "7850665",
+    "number": "20"
+  },
+  {
+    "rooms": "3",
+    "square": "81.3",
+    "floor": "11",
+    "count": "8500648",
+    "number": "19"
+  }
 ]
