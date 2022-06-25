@@ -2,6 +2,7 @@
 
 const state = {
   // filterForm: document.querySelector(".filter__form"),
+  buttonUp: document.querySelector(".button-up"),
   buttonAddCards: document.querySelector(".rooms__button-add-cards"),
   inputSquareFrom: document.getElementById("square-from"),
   inputSquareTo: document.getElementById("square-to"),
@@ -61,11 +62,11 @@ function showSliders() {
   });
 
   state.inputCostTo.addEventListener("change", function () {
-    costSlider.noUiSlider.set([null, this.value]);
+    costSlider.noUiSlider.set([null, deleteSpaceFromValue(this.value)]);
   });
 
   state.inputCostFrom.addEventListener("change", function () {
-    costSlider.noUiSlider.set([this.value, null]);
+    costSlider.noUiSlider.set([deleteSpaceFromValue(this.value), null]);
   });
 
   //==============================================================
@@ -136,7 +137,7 @@ function getCards() {
         setDefaultValuesSliders(data);
         showSliders();
       }
-      state.numberCardsDisplayed = 5;
+      // state.numberCardsDisplayed = 5;
       deleteAllCards();
       state.filteredCards = filterCards(data);
       showCards();
@@ -299,3 +300,23 @@ function showCards() {
     addCard(rooms, square, floor, count);
   });
 }
+
+function deleteSpaceFromValue(value) {
+  return Number(String(value).replace(/\s/g, ""));
+}
+
+state.buttonUp.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
+
+window.addEventListener("scroll", () => {
+  if (scrollY > 0) {
+    state.buttonUp.style.display = "inline";
+  } else {
+    state.buttonUp.style.display = "none";
+  }
+});

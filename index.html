@@ -17,8 +17,8 @@
           <p class="rooms__text rooms__text_type_plan">Планировка</p>
           <p class="rooms__text rooms__text_type_room">Квартира</p>
           <button class="rooms__button rooms__button_type_square">
-            <p class="rooms__text">S, м<span class="rooms__index">2</span></p>
-            <div class="rooms__icon">
+            <span class="rooms__text">S, м<span class="rooms__index">2</span></span>
+            <span class="rooms__icon">
               <svg class="icon icon_type_arrow">
                 <use
                   xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
@@ -29,11 +29,11 @@
                   xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
                 ></use>
               </svg>
-            </div>
+            </span>
           </button>
           <button class="rooms__button rooms__button_type_floor">
-            <p class="rooms__text">Этаж</p>
-            <div class="rooms__icon">
+            <span class="rooms__text">Этаж</span>
+            <span class="rooms__icon">
               <svg class="icon icon_type_arrow">
                 <use
                   xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
@@ -44,11 +44,11 @@
                   xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
                 ></use>
               </svg>
-            </div>
+            </span>
           </button>
           <button class="rooms__button">
-            <p class="rooms__text">Цена, &#8381;</p>
-            <div class="rooms__icon">
+            <span class="rooms__text">Цена, &#8381;</span>
+            <span class="rooms__icon">
               <svg class="icon icon_type_arrow">
                 <use
                   xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
@@ -59,7 +59,7 @@
                   xlink:href="dist/images/icons/sprite.svg#icon-arrow-up"
                 ></use>
               </svg>
-            </div>
+            </span>
           </button>
 
         </div>
@@ -94,6 +94,13 @@
         </form>
       </div>
     </aside>
+    <button class="button-up">
+      <svg class="icon icon_type_button-up">
+        <use
+          xlink:href="dist/images/icons/sprite.svg#icon-button-up"
+        ></use>
+      </svg>
+    </button>
   </main>
   <template id="card-template">
     <li class="card card_margin_bottom">
