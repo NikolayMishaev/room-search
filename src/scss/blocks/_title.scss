@@ -3,5 +3,8 @@
   font-weight: 700;
   font-size: 54px;
   line-height: 55px;
-  margin: 0 0 24px;
+  margin: 0 0 30px;
+  @media #{$screen-desktop} {
+    margin-bottom: 48px;
+  }
 }

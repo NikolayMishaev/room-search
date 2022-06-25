@@ -1,4 +1,7 @@
 .main-block {
-  padding-right: 36px;
+  padding-right: 28px;
   flex-grow: 1;
+  @media #{$screen-desktop} {
+    padding-right: 80px;
+  }
 }

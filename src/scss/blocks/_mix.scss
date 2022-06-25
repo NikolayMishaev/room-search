@@ -1,0 +1,5 @@
+.desktop-hidden {
+  @media #{$screen-desktop} {
+    display: none;
+  }
+}

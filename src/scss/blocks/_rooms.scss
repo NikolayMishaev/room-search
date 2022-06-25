@@ -5,10 +5,33 @@
     font-weight: 300;
     font-size: 14px;
     line-height: 20px;
+    display: flex;
+    align-items: center;
+    &_type_plan {
+      display: none;
+      min-width: 80px;
+    }
+    &_type_room {
+      display: none;
+    }
+    @media #{$screen-desktop} {
+      display: flex;
+      &_type_room {
+        margin-right: auto;
+        margin-left: 20px;
+      }
+      &_type_plan {
+        margin-right: 0;
+      }
+    }
   }
   &__heading {
     display: flex;
-    margin: 0 0 16px 24px;
+    margin: 0 0 7px 24px;
+    @media #{$screen-desktop} {
+      margin-left: 0;
+      margin-bottom: 14px;
+    }
   }
   &__icon {
     display: flex;
@@ -17,7 +40,8 @@
     flex-direction: column;
   }
   &__index {
-    vertical-align: super;
+    position: relative;
+    top: -4px;
     font-size: 10px;
   }
   &__button {
@@ -29,6 +53,15 @@
     padding-left: 0;
     &:hover {
       cursor: pointer;
+    }
+    &:last-child{
+      @media #{$screen-desktop} {
+        margin-right: 0;
+      }
+    }
+    @media #{$screen-desktop} {
+      width: 120px;
+      margin-right: 20px;
     }
     &_type_square {
       min-width: 60px;

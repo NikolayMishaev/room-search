@@ -1,7 +1,11 @@
 .main {
   max-width: 1440px;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   padding: 48px 54px;
   align-items: flex-start;
+  @media #{$screen-desktop} {
+    padding: 96px 80px;
+  }
 }

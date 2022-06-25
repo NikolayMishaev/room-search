@@ -5,6 +5,11 @@
   min-height: 318px;
   box-sizing: border-box;
   border-radius: 10px;
+  @media #{$screen-desktop} {
+    width: 399px;
+    min-height: 372px;
+    padding: 40px;
+  }
   &__inputs {
     display: flex;
   }
@@ -65,6 +70,11 @@
     line-height: 18px;
     mix-blend-mode: normal;
     margin: 24px 0 0;
+    @media #{$screen-desktop} {
+      margin: 26px 0 2px;
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
   &__text {
     font-style: normal;
@@ -89,7 +99,11 @@
     transition: $transition;
     &:hover {
       cursor: pointer;
-      opacity: .5;
+      opacity: 0.5;
+    }
+    @media #{$screen-desktop} {
+      font-size: 14px;
+      line-height: 20px;
     }
   }
   &__close {

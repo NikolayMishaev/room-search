@@ -3,15 +3,29 @@
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 16px 24px;
+  padding: 15px 24px;
   &_margin_bottom {
     margin-bottom: 4px;
+    @media #{$screen-desktop} {
+      margin-bottom: 10px;
+    }
+  }
+  @media #{$screen-desktop} {
+    border: none;
+    border-radius: unset;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
   }
   &__image {
     width: 80px;
     height: 80px;
     background: url(./../images/room.jpg);
     margin-left: auto;
+    @media #{$screen-desktop} {
+      order: -1;
+      margin-left: 0;
+      flex-shrink: 0;
+    }
   }
   &__title {
     margin: 0;
@@ -19,16 +33,38 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+    @media #{$screen-desktop} {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 2px;
+    }
   }
   &__description {
     display: flex;
+    @media #{$screen-desktop} {
+      margin-left: auto;
+      margin-top: 2px;
+    }
   }
   &__text {
     margin-right: 10px;
+    margin-top: 17px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+    &:last-child {
+      @media #{$screen-desktop} {
+      margin-right: 0;
+      }
+    }
+    @media #{$screen-desktop} {
+      margin: 0;
+      margin-right: 20px;
+      width: 120px;
+      font-size: 16px;
+      line-height: 24px;
+    }
     &_type_grey {
       opacity: 0.5;
     }
@@ -38,5 +74,17 @@
     &_type_floor {
       min-width: 80px;
     }
+  }
+  &__info {
+    @media #{$screen-desktop} {
+      margin-left: 20px;
+      display: flex;
+      width: 100%;
+    }
+  }
+  &__index {
+    position: relative;
+    top: -6px;
+    font-size: 10px;
   }
 }
