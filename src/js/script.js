@@ -48,17 +48,11 @@ function showSliders() {
     var value = values[handle];
 
     if (handle) {
-      state.inputCostTo.value = value
-        .split(".")[0]
-        .replace(/[^0-9.]/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      state.inputCostTo.value = addSpaceToValue(value.split(".")[0]);
       state.countToSelect = Number(value.split(".")[0]);
       debounceGetCards();
     } else {
-      state.inputCostFrom.value = value
-        .split(".")[0]
-        .replace(/[^0-9.]/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      state.inputCostFrom.value = addSpaceToValue(value.split(".")[0]);
       state.countFromSelect = Number(value.split(".")[0]);
       debounceGetCards();
     }
@@ -90,17 +84,11 @@ function showSliders() {
     var value = values[handle];
 
     if (handle) {
-      state.inputSquareTo.value = value
-        .split(".")[0]
-        .replace(/[^0-9.]/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      state.inputSquareTo.value = addSpaceToValue(value.split(".")[0]);
       state.squareToSelect = Number(value.split(".")[0]);
       debounceGetCards();
     } else {
-      state.inputSquareFrom.value = value
-        .split(".")[0]
-        .replace(/[^0-9.]/g, "")
-        .replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      state.inputSquareFrom.value = addSpaceToValue(value.split(".")[0]);
       state.squareFromSelect = Number(value.split(".")[0]);
       debounceGetCards();
     }
@@ -206,7 +194,8 @@ function addCard(rooms, square, floor, count, number) {
     ","
   );
   cardElement.querySelector(".card__floor").textContent = floor;
-  cardElement.querySelector(".card__count").textContent = count;
+  cardElement.querySelector(".card__count").textContent =
+    addSpaceToValue(count);
   cardsContainer.append(cardElement);
 }
 
@@ -322,6 +311,10 @@ function showCards() {
     const { rooms, square, floor, count, number } = i;
     addCard(rooms, square, floor, count, number);
   });
+}
+
+function addSpaceToValue(value) {
+  return value.replace(/[^0-9.]/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
 function deleteSpaceFromValue(value) {
