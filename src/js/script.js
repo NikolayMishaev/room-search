@@ -2,6 +2,7 @@
 
 const state = {
   // filterForm: document.querySelector(".filter__form"),
+  buttonAddCards: document.querySelector(".rooms__button-add-cards"),
   inputSquareFrom: document.getElementById("square-from"),
   inputSquareTo: document.getElementById("square-to"),
   inputCostFrom: document.getElementById("cost-from"),
@@ -19,6 +20,8 @@ const state = {
   squareTo: 0,
   rooms: [2],
   defaultValues: false,
+  numberCardsDisplayed: 5,
+  filteredCards: [],
 };
 
 // логика работы ползунков в фильтре
@@ -133,13 +136,20 @@ function getCards() {
         setDefaultValuesSliders(data);
         showSliders();
       }
+      state.numberCardsDisplayed = 5;
       deleteAllCards();
-      const filteredCards = filterCards(data);
-      filteredCards.forEach((i) => {
-        const { rooms, square, floor, count } = i;
-        addCard(rooms, square, floor, count);
-      });
+      state.filteredCards = filterCards(data);
+      showCards();
+      toggleVisibleButtonAddCards();
     });
+}
+
+function toggleVisibleButtonAddCards() {
+  if (state.numberCardsDisplayed < state.filteredCards.length) {
+    state.buttonAddCards.style.display = "block";
+  } else {
+    state.buttonAddCards.style.display = "none";
+  }
 }
 
 const cardsContainer = document.querySelector(".rooms__cards");
@@ -272,5 +282,20 @@ state.filterReset.addEventListener("click", () => {
   state.inputSquareFrom.dispatchEvent(new Event("change"));
   state.inputSquareTo.value = getDefaultValueSquareTo();
   state.inputSquareTo.dispatchEvent(new Event("change"));
+  state.numberCardsDisplayed = 5;
+  toggleVisibleButtonAddCards();
   getCards();
 });
+
+state.buttonAddCards.addEventListener("click", () => {
+  state.numberCardsDisplayed += 20;
+  showCards();
+  toggleVisibleButtonAddCards();
+});
+
+function showCards() {
+  state.filteredCards.slice(0, state.numberCardsDisplayed).forEach((i) => {
+    const { rooms, square, floor, count } = i;
+    addCard(rooms, square, floor, count);
+  });
+}

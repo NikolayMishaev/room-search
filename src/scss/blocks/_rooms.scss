@@ -27,7 +27,7 @@
   }
   &__heading {
     display: flex;
-    margin: 0 0 7px 24px;
+    margin: 0 0 10px 24px;
     @media #{$screen-desktop} {
       margin-left: 0;
       margin-bottom: 14px;
@@ -54,7 +54,7 @@
     &:hover {
       cursor: pointer;
     }
-    &:last-child{
+    &:last-child {
       @media #{$screen-desktop} {
         margin-right: 0;
       }
@@ -73,5 +73,30 @@
   &__cards {
     margin: 0;
     padding: 0;
+  }
+  &__button-add-cards {
+    display: none;
+    min-width: 149px;
+    min-height: 38px;
+    border: 1px solid rgba(11, 23, 57, 0.2);
+    border-radius: 25px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    background-color: transparent;
+    margin-top: 20px;
+    transition: $transition;
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
+    @media #{$screen-desktop} {
+      margin-top: 37px;
+      font-size: 16px;
+      line-height: 24px;
+      min-width: 156px;
+      min-height: 40px;
+    }
   }
 }

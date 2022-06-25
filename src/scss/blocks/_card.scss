@@ -10,6 +10,12 @@
       margin-bottom: 10px;
     }
   }
+  &:last-child {
+    @media #{$screen-desktop} {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 25px;
+    }
+  }
   @media #{$screen-desktop} {
     border: none;
     border-radius: unset;
@@ -19,7 +25,7 @@
   &__image {
     width: 80px;
     height: 80px;
-    background: url(./../images/room.jpg);
+    background: url(./../images/room.jpg) center/contain;
     margin-left: auto;
     @media #{$screen-desktop} {
       order: -1;
