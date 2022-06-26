@@ -3,6 +3,8 @@ import noUiSlider from "nouislider";
 import { debounce } from "debounce";
 
 const state = {
+  roomsButtonsCursors: document.querySelectorAll(".rooms__icon-arrow"),
+  roomsButtons: document.querySelectorAll(".rooms__button"),
   cardsContainer: document.querySelector(".rooms__cards"),
   loader: document.querySelector(".loader"),
   buttonUp: document.querySelector(".button-up"),
@@ -26,9 +28,11 @@ const state = {
   defaultValues: false,
   numberCardsDisplayed: 5,
   filteredCards: [],
-  sortFloor: "asc",
-  sortPrice: "asc",
-  sortSquare: "asc",
+  sort: {
+    floor: "asc",
+    count: "asc",
+    square: "asc",
+  },
 };
 
 const debounceGetCards = debounce(getCards, 300);
@@ -272,7 +276,6 @@ function countActiveClass(buttons, activeClass) {
 }
 
 function deleteActiveClass(buttons, activeClass) {
-  state.rooms = [];
   buttons.forEach((i) => i.classList.remove(activeClass));
 }
 
@@ -295,6 +298,37 @@ function imitationEvent(element, event) {
   element.dispatchEvent(new Event(event));
 }
 
+function setListenerSort(array) {
+  array.forEach((i) =>
+    i.addEventListener("click", () => {
+      sortCards(i);
+    })
+  );
+}
+
+function sortCards(i) {
+  state.roomsButtonsCursors.forEach((i) =>
+    i.classList.remove("rooms__icon-arrow_active")
+  );
+  if (state.sort[i.ariaLabel] === "asc") {
+    state.filteredCards.sort((a, b) => a[i.ariaLabel] - b[i.ariaLabel]);
+    state.sort[i.ariaLabel] = "desc";
+    i.querySelector(".icon_type_arrow").classList.add(
+      "rooms__icon-arrow_active"
+    );
+  } else {
+    state.filteredCards.sort((a, b) => b[i.ariaLabel] - a[i.ariaLabel]);
+    state.sort[i.ariaLabel] = "asc";
+    i.querySelector(".icon_type_arrow-down").classList.add(
+      "rooms__icon-arrow_active"
+    );
+  }
+  deleteActiveClass(state.roomsButtons, "rooms__button_type_active");
+  i.classList.add("rooms__button_type_active");
+  deleteAllCards();
+  showCards();
+}
+
 state.filterButtonsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("filter__button")) {
     toogleActiveClass(e.target, "filter__button_active");
@@ -303,6 +337,7 @@ state.filterButtonsContainer.addEventListener("click", (e) => {
 });
 
 state.filterReset.addEventListener("click", () => {
+  state.rooms = [];
   deleteActiveClass(state.filterButtons, "filter__button_active");
   toogleActiveClass(state.filterButtons[1], "filter__button_active");
   state.inputCostFrom.value = getDefaultValueCountFrom();
@@ -343,44 +378,4 @@ window.addEventListener("scroll", () => {
 
 getCards();
 
-document
-  .querySelector(".rooms__button_type_floor")
-  .addEventListener("click", () => {
-    if (state.sortFloor === "asc") {
-      state.filteredCards.sort((a, b) => a.floor - b.floor);
-      state.sortFloor = "desc";
-    } else {
-      state.filteredCards.sort((a, b) => b.floor - a.floor);
-      state.sortFloor = "asc";
-    }
-    deleteAllCards();
-    showCards();
-  });
-
-document
-  .querySelector(".rooms__button_type_price")
-  .addEventListener("click", () => {
-    if (state.sortPrice === "asc") {
-      state.filteredCards.sort((a, b) => a.count - b.count);
-      state.sortPrice = "desc";
-    } else {
-      state.filteredCards.sort((a, b) => b.count - a.count);
-      state.sortPrice = "asc";
-    }
-    deleteAllCards();
-    showCards();
-  });
-
-document
-  .querySelector(".rooms__button_type_square")
-  .addEventListener("click", () => {
-    if (state.sortSquare === "asc") {
-      state.filteredCards.sort((a, b) => a.square - b.square);
-      state.sortSquare = "desc";
-    } else {
-      state.filteredCards.sort((a, b) => b.square - a.square);
-      state.sortSquare = "asc";
-    }
-    deleteAllCards();
-    showCards();
-  });
+setListenerSort(state.roomsButtons);

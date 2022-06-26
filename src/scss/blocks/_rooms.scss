@@ -34,10 +34,14 @@
     }
   }
   &__icon {
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &-arrow_active {
+      color:$green;
+    }
   }
   &__index {
     position: relative;
@@ -68,6 +72,9 @@
     }
     &_type_floor {
       min-width: 80px;
+    }
+    &_type_active {
+      color: $green;
     }
   }
   &__cards {
