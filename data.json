@@ -302,7 +302,7 @@
   },
   {
     "rooms": "2",
-    "square": "68.1",
+    "square": "78.1",
     "floor": "8",
     "count": "8026409",
     "number": "75"
@@ -380,7 +380,7 @@
   {
     "rooms": "2",
     "square": "75.3",
-    "floor": "8",
+    "floor": "2",
     "count": "9015654",
     "number": "64"
   },
@@ -660,7 +660,7 @@
   {
     "rooms": "2",
     "square": "76.9",
-    "floor": "13",
+    "floor": "8",
     "count": "9546540",
     "number": "24"
   },

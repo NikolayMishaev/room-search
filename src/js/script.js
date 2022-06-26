@@ -25,7 +25,7 @@ const state = {
   squareFrom: 0,
   squareTo: 0,
   rooms: [2],
-  defaultValues: false,
+  initialStartup: true,
   numberCardsDisplayed: 5,
   filteredCards: [],
   sort: {
@@ -112,19 +112,19 @@ function showSliders() {
 }
 
 function getDefaultValueCountFrom() {
-  return (state.countFrom + state.countTo) / 2 - 1500000;
+  return (state.countFrom + state.countTo) / 2 - 2500000;
 }
 
 function getDefaultValueCountTo() {
-  return (state.countFrom + state.countTo) / 2 + 1500000;
+  return (state.countFrom + state.countTo) / 2 + 2500000;
 }
 
 function getDefaultValueSquareFrom() {
-  return (state.squareFrom + state.squareTo) / 2 - 10;
+  return (state.squareFrom + state.squareTo) / 2 - 15;
 }
 
 function getDefaultValueSquareTo() {
-  return (state.squareFrom + state.squareTo) / 2 + 10;
+  return (state.squareFrom + state.squareTo) / 2 + 15;
 }
 
 // получение данных из json-файла
@@ -139,7 +139,7 @@ function getCards() {
           : Promise.reject(`Ошибка: ${res.status} ${res.statusText}`)
       )
       .then((data) => {
-        if (!state.defaultValues) {
+        if (state.initialStartup) {
           setDefaultValuesSliders(data);
           showSliders();
         }
@@ -155,6 +155,10 @@ function getCards() {
         showCards();
         toggleVisibleButtonAddCards();
         state.loader.style.display = "none";
+        if (state.initialStartup) {
+          sortCards(state.roomsButtons[2]);
+        }
+        state.initialStartup = false;
       })
       .catch((err) => {
         console.log(err);
@@ -213,7 +217,6 @@ function setDefaultValuesSliders(cards) {
     setSquareFrom(i);
     setSquareTo(i);
   });
-  state.defaultValues = true;
 }
 
 function setCountFrom(i) {
@@ -377,5 +380,4 @@ window.addEventListener("scroll", () => {
 });
 
 getCards();
-
 setListenerSort(state.roomsButtons);
