@@ -33,6 +33,7 @@ const state = {
     count: "asc",
     square: "asc",
   },
+  sortButtonClick: false,
 };
 
 const debounceGetCards = debounce(getCards, 300);
@@ -142,6 +143,7 @@ function getCards() {
         if (state.initialStartup) {
           setDefaultValuesSliders(data);
           showSliders();
+          state.initialStartup = false;
         }
         // state.numberCardsDisplayed = 5;
         deleteAllCards();
@@ -155,10 +157,10 @@ function getCards() {
         showCards();
         toggleVisibleButtonAddCards();
         state.loader.style.display = "none";
-        if (state.initialStartup) {
+        if (!state.sortButtonClick) {
+          state.sort.count = "asc";
           sortCards(state.roomsButtons[2]);
         }
-        state.initialStartup = false;
       })
       .catch((err) => {
         console.log(err);
@@ -381,3 +383,10 @@ window.addEventListener("scroll", () => {
 
 getCards();
 setListenerSort(state.roomsButtons);
+state.roomsButtons.forEach((i) =>
+  i.addEventListener("click", () => {
+    if (!state.sortButtonClick) {
+      state.sortButtonClick = true;
+    }
+  })
+);
