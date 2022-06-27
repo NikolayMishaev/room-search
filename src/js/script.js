@@ -25,15 +25,14 @@ const state = {
   squareFrom: 0,
   squareTo: 0,
   rooms: [2],
-  initialStartup: true,
   numberCardsDisplayed: 5,
   filteredCards: [],
   sort: {
     floor: "asc",
-    count: "asc",
+    count: "desc",
     square: "asc",
   },
-  sortButtonClick: false,
+  initialStartup: true,
 };
 
 const debounceGetCards = debounce(getCards, 300);
@@ -157,10 +156,7 @@ function getCards() {
         showCards();
         toggleVisibleButtonAddCards();
         state.loader.style.display = "none";
-        if (!state.sortButtonClick) {
-          state.sort.count = "asc";
-          sortCards(state.roomsButtons[2]);
-        }
+        sortCards(findCurrentActiveSortParameter());
       })
       .catch((err) => {
         console.log(err);
@@ -334,6 +330,15 @@ function sortCards(i) {
   showCards();
 }
 
+function findCurrentActiveSortParameter() {
+  const element = Array.from(state.roomsButtons).find((i) =>
+    i.classList.contains("rooms__button_type_active")
+  );
+  state.sort[element.ariaLabel] =
+    state.sort[element.ariaLabel] === "asc" ? "desc" : "asc";
+  return element;
+}
+
 state.filterButtonsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("filter__button")) {
     toogleActiveClass(e.target, "filter__button_active");
@@ -383,10 +388,3 @@ window.addEventListener("scroll", () => {
 
 getCards();
 setListenerSort(state.roomsButtons);
-state.roomsButtons.forEach((i) =>
-  i.addEventListener("click", () => {
-    if (!state.sortButtonClick) {
-      state.sortButtonClick = true;
-    }
-  })
-);

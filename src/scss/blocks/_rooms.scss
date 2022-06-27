@@ -55,8 +55,10 @@
     border: none;
     margin-right: 10px;
     padding-left: 0;
+    transition: $transition;
     &:hover {
       cursor: pointer;
+      opacity: .5;
     }
     &:last-child {
       @media #{$screen-desktop} {
